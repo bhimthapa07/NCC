@@ -254,20 +254,23 @@
                     <div class="text-center mb-16">
                         <h2 class="text-4xl font-black mb-4 uppercase tracking-tight text-slate-900">Memories from the <span class="text-blue-900">Unit</span></h2>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                        <div class="gallery-item relative aspect-square rounded-2xl">
-                            <img src="bhim/metrovaartha-en_2024-01_57d65dd8-0def-4252-b684-e38ae9d9a6e7_NCCGirls.avif?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="NCC Parade">
-                        </div>
-                        <div class="gallery-item relative aspect-square rounded-2xl">
-                            <img src="bhim/mountain-logo-design-template-trekking-and-adventure-logo-free-vector.jpg?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Trekking">
-                        </div>
-                        <div class="gallery-item relative aspect-square rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1599591462444-4860647ea321?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Weapon Training">
-                        </div>
-                        <div class="gallery-item relative aspect-square rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1579451861283-a2239070aaa9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Camp">
-                        </div>
-                    </div>
+                <!-- FILTER BUTTONS -->
+<div style="text-align:center; margin-bottom:15px;">
+  <button onclick="filterGallery('all')">All</button>
+  <button onclick="filterGallery('trekking')">Trekking</button>
+  <button onclick="filterGallery('drill')">Drill</button>
+</div>
+
+<!-- FILTERABLE GALLERY -->
+<div id="gallery" style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+
+  <img src="https://raw.githubusercontent.com/bhimthapa07/NCC/main/bhdm/metrovartha-en_2024-01_57d65dd8-0def-4252-b684-03a09d9a6e7_NCCdris.jpg"
+       data-category="drill">
+
+  <img src="https://raw.githubusercontent.com/bhimthapa07/NCC/main/bhdm/mountain-logo-design-template-trekking-and-adventure-logo-free-vector.jpg"
+       data-category="trekking">
+
+</div>
                     <div class="text-center">
                         <button onclick="navigateTo('gallery')" class="px-8 py-4 border-2 border-blue-900 text-blue-900 font-bold rounded-2xl hover:bg-blue-50 transition-all">View Full Archive</button>
                     </div>
@@ -607,6 +610,16 @@
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         navigateTo('home');
     </script>
+        <script>
+function filterGallery(category) {
+  document.querySelectorAll('#gallery img').forEach(img => {
+    img.style.display =
+      (category === 'all' || img.dataset.category === category)
+      ? 'block'
+      : 'none';
+  });
+}
+</script>
 </body>
 
 </html>
