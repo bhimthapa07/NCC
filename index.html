@@ -610,19 +610,25 @@
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         navigateTo('home');
     </script>
-        <script>
+       <script>
 function filterGallery(category) {
-  document.querySelectorAll('#gallery img').forEach(img => {
-    img.style.display =
-      (category === 'all' || img.dataset.category === category)
-      ? 'block'
-      : 'none';
+  const images = document.querySelectorAll('#gallery img');
+
+  images.forEach(img => {
+    if (category === 'all' || img.dataset.category === category) {
+      img.style.display = '';
+    } else {
+      img.style.display = 'none';
+    }
   });
 }
+
+filterGallery('all');
 </script>
 </body>
 
 </html>
+
 
 
 
